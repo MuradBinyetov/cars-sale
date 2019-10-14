@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/js.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+    <script>
+
+        let mawin = {
+
+            mawin1: {
+                model: 'Land Rover Discovery',
+                il: '2015',
+                ban: 'sedan',
+                reng: 'ag',
+                Mator: '3.5L',
+                'Muherrikin hecmi': '272 a.g',
+                nagd: 60000,
+                kredit: 20000,
+                yuruw: '27000 km',
+                tarix: '27.07.2019'
+
+            }
+        }
+
+
+
+        let con = create('div', ['container'], 'body');
+
+        let as = localStorage['cars'];
+        let obj = JSON.parse(as);
+
+        let mainDiv = create('div', ['card', 'w-50'], con);
+
+
+        let img = create('img', ['card-img-top'], mainDiv);
+        img.src = 'image/Без названия.jpg';
+
+        let cardBody = create('div', ['card-body'], mainDiv);
+        let headText = create('h5', ['card-title'], cardBody);
+        headText.innerText = obj.model;
+
+        let ul1 = create('ul', ['float-left'], cardBody);
+        let ul2 = create('ul', '', cardBody);
+
+
+        for (let i in mawin) {
+            for (let a in mawin[i]) {
+                let list1 = create('li', ['list'], ul1);
+                list1.innerText = a;
+
+                let list2 = create('li', '', ul2);
+                list2.innerText = (mawin[i][a]);
+            }
+        }
+
+
+        let nagd = create('button', ['btn', 'btn-success'], con);
+        nagd.innerText = 'Nagd Al';
+
+        let kredit = create('button', ['btn', 'btn-danger'], con);
+        kredit.innerText = 'Kredit';
+
+
+        nagd.addEventListener('click', function () {
+            let form = create('form', ['pt-5', 'col-3'], con);
+
+            let label = create('label', '', form);
+            label.setAttribute('for', 'kart');
+            label.innerText = 'Kartinizin wifresini daxil edin';
+
+            let kart = create('input', ['form-control'], form);
+            kart.setAttribute('id', 'kart');
+            // kart.setAttribute('onkeypress')
+
+            let label1 = create('label', '', form);
+            label1.setAttribute('for', 'tarix');
+            label1.innerText = 'Kartinizin bitme tarixini daxil edin';
+
+            let tarix = create('input', ['form-control'], form);
+            tarix.setAttribute('id', 'tarix');
+
+            let label2 = create('label', '', form);
+            label2.setAttribute('for', 'cvv');
+            label2.innerText = '3 reqemli kodu daxil edin';
+
+            let cvv = create('input', ['form-control'], form);
+            cvv.setAttribute('id', 'cvv');
+
+            let pay = create('button', ['btn', 'btn-success'], form);
+            pay.innerText = 'Ode';
+            pay.addEventListener('click', function () {
+            })
+        })
+
+
+        kredit.addEventListener('click', function () {
+            let inp = create('input', ['form-control', 'col-3'], con);
+            inp.setAttribute('type', 'number');
+            inp.setAttribute('placeholder', 'Odeyeceyiniz meblegi daxil edin');
+
+
+            let btn = create('button', ['btn', 'btn-success', 'd-block'], con);
+            btn.innerText = 'hesabla';
+
+            btn.addEventListener('click', function () {
+                if (inp.value >= mawin.mawin1.kredit && inp.value < mawin.mawin1.nagd) {
+                    let a = mawin.mawin1.nagd;
+                    let b = inp.value;
+                    let btn6 = create('button', ['btn', 'btn-primary'], con);
+                    btn6.innerText = '6 ay';
+
+                    let btn12 = create('button', ['btn', 'btn-primary'], con);
+                    btn12.innerText = '12 ay';
+
+                    let btn18 = create('button', ['btn', 'btn-primary'], con);
+                    btn18.innerText = '18 ay';
+
+                    let p = create('p', '', con);
+
+                    if (btn6.addEventListener('click', function () {
+                        p.innerText = 'Qalan meblegin 6 aya olan kredit faizi:' + " " + Math.round((a - b) + (a - b) * 4 / 6);
+
+                        let form = create('form', ['pt-5', 'col-3'], con);
+
+                        let label = create('label', '', form);
+                        label.setAttribute('for', 'kart');
+                        label.innerText = 'Kartinizin wifresini daxil edin';
+
+                        let kart = create('input', ['form-control'], form);
+                        kart.setAttribute('id', 'kart');
+
+                        let label1 = create('label', '', form);
+                        label1.setAttribute('for', 'tarix');
+                        label1.innerText = 'Kartinizin bitme tarixini daxil edin';
+
+                        let tarix = create('input', ['form-control'], form);
+                        tarix.setAttribute('id', 'tarix');
+
+                        let label2 = create('label', '', form);
+                        label2.setAttribute('for', 'cvv');
+                        label2.innerText = '3 reqemli kodu daxil edin';
+
+                        let cvv = create('input', ['form-control'], form);
+                        cvv.setAttribute('id', 'cvv');
+
+                        let pay = create('button', ['btn', 'btn-success'], form);
+                        pay.innerText = 'Ode';
+                        pay.addEventListener('click', function () {
+                        })
+                    })) { }
+
+
+                    if (btn12.addEventListener('click', function () {
+                        p.innerText = 'Qalan meblegin 12 aya olan kredit faizi:' + " " + Math.round((a - b) + (a - b) * 10 / 12);
+
+                        let form = create('form', ['pt-5', 'col-3'], con);
+
+                        let label = create('label', '', form);
+                        label.setAttribute('for', 'kart');
+                        label.innerText = 'Kartinizin wifresini daxil edin';
+
+                        let kart = create('input', ['form-control'], form);
+                        kart.setAttribute('id', 'kart');
+
+
+                        let label1 = create('label', '', form);
+                        label1.setAttribute('for', 'tarix');
+                        label1.innerText = 'Kartinizin bitme tarixini daxil edin';
+
+                        let tarix = create('input', ['form-control'], form);
+                        tarix.setAttribute('id', 'tarix');
+
+                        let label2 = create('label', '', form);
+                        label2.setAttribute('for', 'cvv');
+                        label2.innerText = '3 reqemli kodu daxil edin';
+
+                        let cvv = create('input', ['form-control'], form);
+                        cvv.setAttribute('id', 'cvv');
+
+                        let pay = create('button', ['btn', 'btn-success'], form);
+                        pay.innerText = 'Ode';
+                        pay.addEventListener('click', function () {
+                        })
+                    })) { }
+
+
+                    if (btn18.addEventListener('click', function () {
+                        p.innerText = 'Qalan meblegin 18 aya olan kredit faizi:' + " " + Math.round((a - b) + (a - b) * 14 / 18);
+
+                        let form = create('form', ['pt-5', 'col-3'], con);
+
+                        let label = create('label', '', form);
+                        label.setAttribute('for', 'kart');
+                        label.innerText = 'Kartinizin wifresini daxil edin';
+
+                        let kart = create('input', ['form-control'], form);
+                        kart.setAttribute('id', 'kart');
+                        // kart.setAttribute('onkeypress')
+
+                        let label1 = create('label', '', form);
+                        label1.setAttribute('for', 'tarix');
+                        label1.innerText = 'Kartinizin bitme tarixini daxil edin';
+
+                        let tarix = create('input', ['form-control'], form);
+                        tarix.setAttribute('id', 'tarix');
+
+                        let label2 = create('label', '', form);
+                        label2.setAttribute('for', 'cvv');
+                        label2.innerText = '3 reqemli kodu daxil edin';
+
+                        let cvv = create('input', ['form-control'], form);
+                        cvv.setAttribute('id', 'cvv');
+
+                        let pay = create('button', ['btn', 'btn-success'], form);
+                        pay.innerText = 'Ode';
+                        pay.addEventListener('click', function () {
+                        })
+                    })) { }
+                }
+                else {
+                    alert('Bu meblegle mawin kredite salinmir :(')
+                }
+            })
+
+        })
+    </script>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
